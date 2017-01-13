@@ -28,6 +28,9 @@ brew install pyenv-virtualenv
 # Redis
 brew install redis
 
+# Ruby
+brew install rbenv
+brew install ruby-build
+
 # Remove outdated versions from the cellar.
 brew cleanup
-

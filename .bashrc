@@ -15,6 +15,11 @@ if command -v pyenv > /dev/null; then
   eval "$(pyenv virtualenv-init -)"
 fi
 
+# Ruby
+if command -v rbenv > /dev/null; then
+  eval "$(rbenv init -)"
+fi
+
 # nvm source ~/.nvm/nvm.sh
 export NVM_DIR="/Users/$(whoami)/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh"

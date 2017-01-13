@@ -15,10 +15,10 @@ The bootstrapper script will pull in the latest version and copy the files to
 your home folder.
 
 ```bash
-git clone https://github.com/pixelhandler/dotfiles.git && cd dotfiles && source bootstrap.sh
+git clone https://github.com/pixelhandler/dotfiles.git ~/.dotfiles && cd ~/.dotfiles && source bootstrap.sh
 ```
 
-To update, `cd` into your local `dotfiles` repository and then:
+To update, `cd` into your local `~/.dotfiles` repository and then:
 
 ```bash
 source bootstrap.sh

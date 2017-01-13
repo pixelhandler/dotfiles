@@ -7,8 +7,12 @@ cd "$(dirname "${BASH_SOURCE}")";
 git pull origin master;
 
 function doIt() {
+  source ./bin/ssh.sh
   git submodule init
   git submodule update
+  git submodule foreach git submodule init
+  git submodule foreach git submodule update
+  source ./bin/vim.sh
   rsync --exclude ".git/" \
     --exclude ".gitmodules" \
     --exclude ".DS_Store" \
