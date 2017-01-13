@@ -13,7 +13,8 @@ brew update
 brew upgrade
 
 # Install vim with luan and override system vi
-brew install vim --with-lua --with-override-system-vi
+brew install lua
+brew install vim --with-lua --with-override-system-vi --with-python3 --without-python
 
 # Install some tools
 brew install ack
