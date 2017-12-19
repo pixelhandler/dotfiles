@@ -1,6 +1,0 @@
-[submodule "bin/z"]
-	path = bin/z
-	url = git@github.com:rupa/z.git
-[submodule ".vim"]
-	path = .vim
-	url = git@github.com:pixelhandler/vim-config.git

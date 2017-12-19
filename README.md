@@ -49,6 +49,8 @@ script for Homebrew, NVM, pyenv, etc.
 
 When setting up a new Mac, you may want to install some common [Homebrew] formulae: 
 
+For linux use linuxbrew, see `ubuntu` branch in this repo
+
 ```bash
 ./bin/brew.sh
 ```

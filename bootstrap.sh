@@ -4,15 +4,11 @@
 
 cd "$(dirname "${BASH_SOURCE}")";
 
-git pull origin master;
+git pull origin ubuntu;
 
 function doIt() {
   source ./bin/ssh.sh
-  git submodule init
-  git submodule update
-  git submodule foreach git submodule init
-  git submodule foreach git submodule update
-  source ./bin/vim.sh
+  #source ./bin/z.sh
   rsync --exclude ".git/" \
     --exclude ".gitignore" \
     --exclude ".gitmodules" \
@@ -21,7 +17,7 @@ function doIt() {
     --exclude "README.md" \
     --exclude "LICENSE.txt" \
     -avh --no-perms . ~;
-  chmod 700 ~/.ssh
+  #chmod 700 ~/.ssht
   source ~/.bash_profile;
 }
 
@@ -35,12 +31,5 @@ else
   fi;
 fi;
 
-echo -n "Would you like to configure your git name and email? (y/n) => "; read answer
-if [[ $answer = "Y" ]] || [[ $answer = "y" ]]; then
-  echo -n "What is your git user name => "; read name
-  git config --global user.name "$name"
-  echo -n "What is your git email => "; read email
-  git config --global user.email "$email"
-fi
-
 unset doIt;
+
