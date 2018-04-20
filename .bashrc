@@ -6,8 +6,14 @@ PATH="/Users/$(whoami)/bin:$PATH:/usr/local/bin:/usr/local/sbin:$PATH"
 export PATH=$PATH
 
 # z script https://github.com/rupa/z.git
-. ~/bin/z/z.sh
-# alias zadd="_z --add \"\$(pwd -P 2>/dev/null)\" 2>/dev/null;"
+if [ -f ~/bin/z/s.sh ]; then
+  . ~/bin/z/z.sh
+  # alias zadd="_z --add \"\$(pwd -P 2>/dev/null)\" 2>/dev/null;"
+fi
+
+if command -v yarn > /dev/null; then
+  export PATH="$PATH:`yarn global bin`"
+fi
 
 # python
 if command -v pyenv > /dev/null; then
@@ -23,7 +29,6 @@ fi
 # nvm source ~/.nvm/nvm.sh
 export NVM_DIR="/Users/$(whoami)/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh"
-#export NODE_PATH="/usr/local/bin/node:/usr/local/lib/node_modules:$NODE_PATH"
 
 # ssh
 ssh-add -A &> /dev/null
@@ -56,6 +61,11 @@ fi
 alias sq=squash
 alias cb=current_branch
 alias pushf=force_push
+
+# Local settings
+if [ -f ~/.bash_local ]; then
+  source ~/.bash_local
+fi
 
 squash(){
   git rebase -i HEAD~$1

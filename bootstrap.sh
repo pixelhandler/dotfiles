@@ -14,6 +14,7 @@ function doIt() {
   git submodule foreach git submodule update
   source ./bin/vim.sh
   rsync --exclude ".git/" \
+    --exclude ".gitignore" \
     --exclude ".gitmodules" \
     --exclude ".DS_Store" \
     --exclude "bootstrap.sh" \
