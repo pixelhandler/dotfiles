@@ -1,7 +1,7 @@
 " ----------------------------------------------------------
 " python venv
-" let g:python3_host_prog='C:\tools\pyvenvs\neovim\Scripts\python.exe'
-" let g:python_host_prog='C:\tools\pyvenvs\neovim\Scripts\python.exe'
+" let g:python3_host_prog='/usr/bin/python'
+let g:python_host_prog='/home/linuxbrew/.linuxbrew/opt/python@3.8/bin/python3'
 
 " ----------------------------------------------------------
 " Plug

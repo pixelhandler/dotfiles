@@ -12,9 +12,14 @@ if [ -d "$HOME/bin" ] ; then
   PATH="$HOME/bin:$PATH"
 fi
 # export PATH=$PATH
-export PATH="/home/linuxbrew/.linuxbrew/bin:$PATH"
-export MANPATH="/home/linuxbrew/.linuxbrew/share/man:$MANPATH"
-export INFOPATH="/home/linuxbrew/.linuxbrew/share/info:$INFOPATH"
+if command -v brew 1>/dev/null 2>&1; then
+  eval $(/home/linuxbrew/.linuxbrew/bin/brew shellenv)
+fi
+if command -v brew > /dev/null; then
+  export PATH="/home/linuxbrew/.linuxbrew/bin:$PATH"
+  export MANPATH="/home/linuxbrew/.linuxbrew/share/man:$MANPATH"
+  export INFOPATH="/home/linuxbrew/.linuxbrew/share/info:$INFOPATH"
+fi
 
 # default editor
 export EDITOR=nvim
@@ -25,20 +30,20 @@ if [ -f ~/bin/z/z.sh ]; then
   # alias zadd="_z --add \"\$(pwd -P 2>/dev/null)\" 2>/dev/null;"
 fi
 
-if command -v yarn > /dev/null; then
-  export PATH="$PATH:`yarn global bin`"
-fi
-
 # python
 if command -v pyenv > /dev/null; then
-  eval "$(pyenv init -)"
-  eval "$(pyenv virtualenv-init -)"
+  export PATH="/home/linuxbrew/.linuxbrew/opt/python@3.8/bin:$PATH"
+  export PKG_CONFIG_PATH="/home/linuxbrew/.linuxbrew/opt/python@3.8/lib/pkgconfig"
 fi
-
+if command -v pyenv 1>/dev/null 2>&1; then
+  eval "$(pyenv init -)"
+  #eval "$(pyenv virtualenv-init -)"
+fi
 # Ruby
 if command -v rbenv > /dev/null; then
   eval "$(rbenv init -)"
   export PATH="$HOME/.rbenv/bin:$PATH"
+  export RUBY_CONFIGURE_OPTS="--with-openssl-dir=$(brew --prefix openssl@1.1)"
 fi
 
 # nvm source ~/.nvm/nvm.sh
@@ -122,3 +127,4 @@ force_push(){
     push --force-with-lease origin $branch
   fi
 }
+
